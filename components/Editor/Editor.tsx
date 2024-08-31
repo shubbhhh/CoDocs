@@ -1,50 +1,46 @@
 'use client';
-/**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
+
+import Theme from './plugins/Theme';
+import ToolbarPlugin from './plugins/ToolbarPlugin';
+import { HeadingNode } from '@lexical/rich-text';
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
-import { ContentEditable } from '@lexical/react/LexicalContentEditable';
-import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
-import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
+import { ContentEditable } from '@lexical/react/LexicalContentEditable';
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
+import React from 'react';
 
-import ExampleTheme from './plugins/Theme';
-import ToolbarPlugin from './plugins/ToolbarPlugin';
+// Catch any errors that occur during Lexical updates and log them
+// or throw them as needed. If you don't throw them, Lexical will
+// try to recover gracefully without losing user data.
 
-const placeholder = 'Enter some rich text...';
-
-const editorConfig = {
-  namespace: 'Demo',
-  nodes: [],
-  // Handling of errors during update
-  onError(error: Error) {
-    throw error;
-  },
-  // The editor theme
-  theme: ExampleTheme,
-};
+function Placeholder() {
+  return <div className="editor-placeholder">Enter some rich text...</div>;
+}
 
 export function Editor() {
+  const initialConfig = {
+    namespace: 'Editor',
+    nodes: [HeadingNode],
+    onError: (error: Error) => {
+      console.error(error);
+      throw error;
+    },
+    theme: Theme,
+  };
+
   return (
-    <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container">
+    <LexicalComposer initialConfig={initialConfig}>
+      <div className="editor-container size-full">
         <ToolbarPlugin />
-        <div className="editor-inner">
+
+        <div className="editor-inner h-[1100px]">
           <RichTextPlugin
             contentEditable={
-              <ContentEditable
-                className="editor-input"
-                aria-placeholder={placeholder}
-                placeholder={
-                  <div className="editor-placeholder">{placeholder}</div>
-                }
-              />
+              <ContentEditable className="editor-input h-full" />
             }
+            placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />
           <HistoryPlugin />
