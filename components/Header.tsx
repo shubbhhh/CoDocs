@@ -4,27 +4,24 @@ import Link from "next/link";
 import React from "react";
 
 const Header = ({ children, className }: HeaderProps) => {
-    return (
+  
+  return (
     <div className={cn("header", className)}>
-      <Link href='/' className="md:flex-1">
+      <Link href='/' className="flex items-center">
         <Image 
-          src="/assets/icons/logo.svg"
-          alt="Logo with name"
-          width={120}
+          src="/assets/images/logo.png"
+          alt="Logo"
+          width={40}
           height={32}
           className="hidden md:block"
-        />
-        <Image 
-          src="/assets/icons/logo-icon.svg"
-          alt="Logo"
-          width={32}
-          height={32}
-          className="mr-2 md:hidden"
-        />
+          />
+        <div className="hidden font-bold items-center md:block">
+          CoDocs
+        </div>
       </Link>
       {children}
     </div>
-    )
+  )
 }
 
 

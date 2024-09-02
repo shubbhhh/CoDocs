@@ -19,13 +19,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode } ) {
   return (
     <ClerkProvider
-      appearance={{
-        baseTheme: dark,
-        variables: {
-          colorPrimary: "#3371FF",
-          fontSize: "16px"
-        }
-      }}
     >
       <html lang="en" suppressHydrationWarning>
         <head />

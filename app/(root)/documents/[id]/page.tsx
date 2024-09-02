@@ -1,3 +1,4 @@
+import { Editor } from "@/components/Editor/Editor";
 import Header from "@/components/Header";
 import {
     SignInButton,
@@ -7,17 +8,24 @@ import {
   } from '@clerk/nextjs'
 
 const Document = () => {
+  
     return (
+    <div className="p-2 w-full">
+      <Header className="p-2 flex justify-between rounded-md shadow-md items-center">
         <div>
-            <Header>
-                <SignedOut>
-                    <SignInButton />
-                </SignedOut>
-                <SignedIn>
-                    <UserButton />
-                </SignedIn>
-            </Header>
+          Doc name
         </div>
+        <div className="flex justify-around items-center w-[60px]">
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
+      </Header>
+      <Editor />
+    </div>
     )
 }
 
