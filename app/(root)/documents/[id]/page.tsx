@@ -1,4 +1,3 @@
-import { Editor } from "@/components/Editor/Editor";
 import Header from "@/components/Header";
 import {
     SignInButton,
@@ -24,7 +23,6 @@ const Document = () => {
           </SignedIn>
         </div>
       </Header>
-      <Editor />
     </div>
     )
 }
