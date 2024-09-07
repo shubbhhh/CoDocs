@@ -1,8 +1,10 @@
-import Image from "next/image";
-import Editor from "@/components/Editor";
+import { RecentDocs } from "@/components/RecentDoc";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
-      <Editor />
+      <div>
+        <Header />
+      </div>
   );
 }
