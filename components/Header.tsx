@@ -10,9 +10,9 @@ export default function Header() {
                 </div>
             </div>
 
-            <div className="flex border px-2 rounded-md w-1/4 items-center">
+            <div className="flex bg-slate-100 px-2 rounded-3xl w-1/4 items-center">
                 <Search />
-                <input type="text" placeholder="Search" name="" id="" className="px-2 outline-none" />
+                <input type="text" placeholder="Search" name="" id="" className="w-full px-2 bg-slate-100 outline-none" />
             </div>
 
             <div className="bg-black h-10 w-10 rounded-full">

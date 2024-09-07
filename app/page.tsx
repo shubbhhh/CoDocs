@@ -1,10 +1,11 @@
-import { RecentDocs } from "@/components/RecentDoc";
 import Header from "@/components/Header";
+import RecentSection from "@/components/RecentSection";
 
 export default function Home() {
   return (
-      <div>
-        <Header />
-      </div>
+    <div>
+      <Header />
+      <RecentSection />
+    </div>
   );
 }
