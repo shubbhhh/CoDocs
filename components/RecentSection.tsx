@@ -1,6 +1,7 @@
 import { Plus } from "lucide-react";
 import { RecentDocs } from "./RecentDoc";
 import { Card } from "./ui/card";
+import CreateNewButton from "./CreateNewButton";
 
 export default function RecentSection() {
     return (
@@ -8,10 +9,7 @@ export default function RecentSection() {
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center justify-between">
             <div className="flex w-1/3 justify-center items-center">
-              <Card className="flex items-center justify-center w-2/3 h-20 rounded-full font-semibold bg-gradient-to-bl from-blue-500 to-white hover:scale-95">
-                <Plus /> 
-                Create a new
-              </Card>
+              <CreateNewButton />
             </div>
             <div className="w-2/3 border-l px-4">
               <div className="py-2 items-center font-light">
