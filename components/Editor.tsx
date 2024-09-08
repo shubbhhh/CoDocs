@@ -1,42 +1,18 @@
 "use client"
 
-import { useCallback } from "react";
-import Quill from "quill";
-import "quill/dist/quill.snow.css"
+import { useEffect } from "react";
+import { useEditor } from "@/hooks/useEditor";
 
-const modules = [
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    [{ font: [] }],
-    [{ list: "ordered" }, { list: "bullet" }],
-    ["bold", "italic", "underline"],
-    [{ color: [] }, { background: [] }],
-    [{ script: "sub" }, { script: "super" }],
-    [{ align: [] }],
-    ["image", "blockquote", "code-block"],
-    ["clean"],
-  ]
   
 
 export default function Editor() {
-    const editorRef = useCallback((editRef: HTMLDivElement) => {
-        if (!editRef) return
+    const { editorRef, setEditorContent, getEditorContent, initializeEditor } = useEditor();
 
-        editRef.innerHTML = ""
-        const editor = document.createElement("div")
-        editRef.append(editor)
-        const q = new Quill(editor, 
-            {
-                theme: "snow",
-                modules: {
-                    toolbar: modules
-                }
-            }
-        )
-    }, [])
+    useEffect(() => {
+        initializeEditor();
+    }, [initializeEditor])
 
     return (
-        <div id="editor" ref={editorRef}>
-            
-        </div>
+        <div id="editor" ref={editorRef}></div>
     )
-}
+};
