@@ -1,4 +1,5 @@
 import { Search } from "lucide-react"
+import { Singin } from "./signinbutton"
 
 export default function Header() {
     return (
@@ -15,8 +16,8 @@ export default function Header() {
                 <input type="text" placeholder="Search" name="" id="" className="w-full px-2 bg-slate-100 outline-none" />
             </div>
 
+            <Singin />
             <div className="bg-black h-10 w-10 rounded-full">
-
             </div>
         </div>
     )
