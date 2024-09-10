@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Quill from "quill";
-import "quill/dist/quill.snow.css";
 import { Modules } from "@/lib/utils";
 
 
@@ -19,15 +18,23 @@ export function useEditor() {
                 modules: Modules,
             });
 
+            quillRef.current.root.innerHTML = editorState;
+
             quillRef.current.on('text-change', () => {
-                setEditorState(quillRef.current?.root.innerHTML || '');
+                const currentContent = quillRef.current?.root.innerHTML || '';
+                if (currentContent !== editorState) {
+                    setEditorState(currentContent);
+                }
             });
         }
-    }, []);
+    }, [editorState]);
 
     useEffect(() => {
         if (quillRef.current) {
-            quillRef.current.root.innerHTML = editorState;
+            const currentContent = quillRef.current.root.innerHTML;
+            if (currentContent !== editorState) {
+                quillRef.current.root.innerHTML = editorState;
+            }
         }
     }, [editorState]);
 
@@ -38,7 +45,6 @@ export function useEditor() {
     const setEditorContent = (content: string) => {
         setEditorState(content);
     };
-
 
     return {
         editorRef,
